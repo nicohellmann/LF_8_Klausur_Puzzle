@@ -18,5 +18,6 @@ class puzzleteil:
             self.links = self.unten
             self.unten = self.rechts
             self.rechts = temp
+            self.gesamtesTeil = [self.links, self.unten, self.rechts]
 
 
