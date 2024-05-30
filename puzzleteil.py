@@ -5,6 +5,7 @@ class puzzleteil:
         self.mitte = mitte
         self.rechts = rechts
         self.gesamtesTeil = [links, mitte, rechts]
+        self.spitzeUnten = False
 
     def drehen(self, richtung = "links"):
         if richtung =="links":
@@ -19,5 +20,13 @@ class puzzleteil:
             self.mitte = self.rechts
             self.rechts = temp
             self.gesamtesTeil = [self.links, self.mitte, self.rechts]
+
+    def spitzeRunterDrehen(self):
+        temp = self.miite
+        self.mitte = self.rechts
+        self.links = temp
+        self.spitzeUnten = True
+
+    
 
 
