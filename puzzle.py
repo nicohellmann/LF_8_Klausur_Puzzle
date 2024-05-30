@@ -10,13 +10,40 @@ class puzzle:
         self.lösung = []
 
     def teilPasst(self,zeile:int,position:int):
-        stimmt = False
+        stimmt = True
         if(self.lösung[zeile][position].spitzeUnten == True):
-            if(self.lösung[zeile][position].mitte == self.lösung[zeile-1][position-1].mitte and self.lösung[zeile][position].links == self.lösung[zeile][position-1].rechts and self.lösung[zeile][position].rechts == self.lösung[zeile][position+1].links):
-                stimmt = True
+            try:
+                if(self.lösung[zeile][position].mitte != self.lösung[zeile-1][position-1].mitte   ):
+                    stimmt = False
+            except:
+                pass
+            try:
+                if(self.lösung[zeile][position].links != self.lösung[zeile][position-1].rechts):
+                    stimmt = False
+            except:
+                pass
+            try:
+                if(self.lösung[zeile][position].rechts != self.lösung[zeile][position+1].links):
+                    stimmt = False
+            except:
+                pass
         else:
-            if(self.lösung[zeile][position].mitte == self.lösung[zeile+1][position+1].mitte and self.lösung[zeile][position].links == self.lösung[zeile][position-1].rechts and self.lösung[zeile][position].rechts == self.lösung[zeile][position+1].links):
-                stimmt = True
+            try:
+                if(self.lösung[zeile][position].mitte != self.lösung[zeile+1][position+1].mitte and self.lösung[zeile][position].links == self.lösung[zeile][position-1].rechts and self.lösung[zeile][position].rechts == self.lösung[zeile][position+1].links):
+                    stimmt = False
+            except:
+                pass
+            try:
+                if(self.lösung[zeile][position].links != self.lösung[zeile][position-1].rechts ):
+                    stimmt = False
+            except:
+                pass
+            try:
+                if(self.lösung[zeile][position].rechts != self.lösung[zeile][position+1].links):
+                    stimmt = False
+            except:
+                pass
+
         return stimmt
 
 
