@@ -6,10 +6,12 @@ class puzzle:
             self.teile = [puzzleteile]
         except:
             self.teile = []
-
+        
         self.lösung = []
-        for i in range(3):
-            self.lösung.append([])
+        
+        self.lösung.append([None]*1)
+        self.lösung.append([None]*3)
+        self.lösung.append([None]*5)
 
     def teilPasst(self,teil:puzzleteil,zeile:int,position:int):
         stimmt = True
@@ -62,13 +64,20 @@ class puzzle:
     def lösungerstellen(self,zeile):
         if self.lösungKontrollieren == True:
             return True
-        for k in range(0,self.teile):
-            for i in range(0,3):
+        for k in range(0,len(self.teile)):
+            for i in range(0,len(self.lösung[zeile])):
+
+                if i%2==0:
+                    self.teile[k].spitzeRunterDrehen()
                 if(self.teilPasst(self.teile[k],zeile,i)):
-                    self.lösung
-        foundPiece = False
-        temp = []
-        temp.append(self.teile[0])
-        self.lösung.append(temp)
-        #for i in range(0,len(self.teile)):
+                    self.lösung[zeile][i] = self.teile.pop(k)
+
+                    if (self.lösungerstellen( zeile + 1) == True):
+                        return True
+                    
+                    self.lösung[zeile][i] = None
+                    
+        return False
+                    
+        
             

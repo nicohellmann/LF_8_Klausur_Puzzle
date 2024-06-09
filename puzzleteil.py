@@ -22,7 +22,7 @@ class puzzleteil:
             self.gesamtesTeil = [self.links, self.mitte, self.rechts]
 
     def spitzeRunterDrehen(self):
-        temp = self.miite
+        temp = self.mitte
         self.mitte = self.rechts
         self.links = temp
         self.spitzeUnten = True
