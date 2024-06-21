@@ -1,11 +1,20 @@
 class Puzzleteil:
 
-    def __init__(self,links:int,mitte:int,rechts:int,spitzeUnten=False):
-        self.links =links
-        self.mitte = mitte
-        self.rechts = rechts
-        self.gesamtesTeil = [links, mitte, rechts]
-        self.spitzeUnten = spitzeUnten
+    def __init__(self,links:int,mitte:int,rechts:int,list = [1],spitzeUnten=False,):
+        if len(list)!=3:
+            self.links =links
+            self.mitte = mitte
+            self.rechts = rechts
+            self.gesamtesTeil = [links, mitte, rechts]
+            self.spitzeUnten = spitzeUnten
+        else:
+            self.links=list[0]
+            self.mitte=list[1]
+            self.rechts=list[2]
+            self.gesamtesTeil = list
+            self.spitzeUnten = spitzeUnten
+            
+
 
             
 
@@ -42,11 +51,20 @@ class Puzzleteil:
     def spitzeRunterDrehen(self):
 
         # die Ecke unten rechts wird die nach unten zeigende "Spitze" -> die linke kante wird zur mittleren
-        temp = self.rechts
-        self.rechts = self.links
-        self.links = temp
-        self.spitzeUnten = True
-        self.gesamtesTeil = [self.links, self.mitte, self.rechts]
+        if self.spitzeUnten==False:
+            temp = self.rechts
+            self.rechts = self.links
+            self.links = temp
+            self.spitzeUnten = True
+            self.gesamtesTeil = [self.links, self.mitte, self.rechts]
+
+    def spitzeHochDrehen(self):
+        if self.spitzeUnten ==True:
+            temp = self.rechts
+            self.rechts = self.links
+            self.links = temp
+            self.spitzeUnten = False
+            self.gesamtesTeil=[self.links, self.mitte, self.rechts]
 
     def __str__(self) -> str:
         re=""

@@ -3,13 +3,28 @@ from puzzleteil import Puzzleteil
 
 piece1 =Puzzleteil(1,2,3)
 piece2 = Puzzleteil(1,2,3,spitzeUnten=True)
-print(piece1)
+piece3=Puzzleteil(4,5,6)
+piece4=Puzzleteil(-6,-2,3,spitzeUnten=True)
+
+datei = "puzzle"+str(0)+".txt"
 
 
-piece1.spitzeRunterDrehen()
-print(piece1)
-piece1.drehen(richtung="rechts")
-print()
-print(piece1)
+puzzle1 = puzzle(datei)
+
+
+
+
+print(puzzle1.lösungerstellen(0))
+print(puzzle1.getLösung())
+
+
+    
+
+
+        
+
+
+
+
 
 
